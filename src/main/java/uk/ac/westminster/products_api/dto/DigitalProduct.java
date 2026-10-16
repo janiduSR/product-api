@@ -1,28 +1,44 @@
 package uk.ac.westminster.products_api.dto;
 
-public class DigitalProduct {
-
+public class DigitalProduct extends Product{
     private String downloadUrl;
-    private double fileSizeMB;
+    private Double fileSizeMB;
 
-    public DigitalProduct(String downloadUrl, double fileSizeMB) {
-        this.downloadUrl = downloadUrl;
+    public DigitalProduct(Long id, String name, Double price, String downloadUrl, Double fileSizeMB) {
+        super(id, name, price);
+        this.downloadUrl =downloadUrl;
         this.fileSizeMB = fileSizeMB;
     }
 
+//    public DigitalProduct(Long id, String name, Double price, String downloadUrl, Double fileSizeMB) {
+//        super(id, name, price);
+//        this.downloadUrl = downloadUrl;
+//        this.fileSizeMB = fileSizeMB;
+//    }
+
     public String getDownloadUrl() {
         return downloadUrl;
+    }
+
+    public Double getFileSizeMB() {
+        return fileSizeMB;
     }
 
     public void setDownloadUrl(String downloadUrl) {
         this.downloadUrl = downloadUrl;
     }
 
-    public double getFileSizeMB() {
-        return fileSizeMB;
+    public void setFileSizeMB(Double fileSizeMB) {
+        this.fileSizeMB = fileSizeMB;
     }
 
-    public void setFileSizeMB(double fileSizeMB) {
-        this.fileSizeMB = fileSizeMB;
+//    public void applyDiscount() {
+//        price = 0.0; // Compilation error!
+//    }
+
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Downloadable product");
     }
 }

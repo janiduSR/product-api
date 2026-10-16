@@ -1,22 +1,22 @@
 package uk.ac.westminster.products_api.dto;
 
 public class Product {
-
-    private long id;
+    private Long id;
     private String name;
-    private double price;
 
-    public Product(long id, String name, double price) {
+    private Double price;
+
+    public Product(Long id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -28,11 +28,20 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
+        if (price < 0) {
+            throw new IllegalArgumentException(
+                    "Price cannot be negative"
+            );
+        }
         this.price = price;
+    }
+
+    public void displayDetails() {
+        System.out.println("General product");
     }
 }
